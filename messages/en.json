@@ -1,8 +1,7 @@
 {
   "Header": {
     "home": "Home",
-    "about": "About",
-    "projects": "Projects",
+    "portfolio": "Portfolio",
     "contact": "Contact"
   }
 }

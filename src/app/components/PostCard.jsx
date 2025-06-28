@@ -1,9 +1,12 @@
+import { Link } from "@/src/i18n/navigation"
+import { useLocale } from "next-intl"
 import Image from "next/image"
 
-export default function PostCard({ post }) {
-  // to add: published date, tags, link to full post ("read more" button)
+export default function PostCard({ post, className = "" }) {
+  const locale = useLocale()
+  
   return (
-    <div className="card bg-base-100 w-90 border border-base-content rounded-xl shadow-sm">
+    <div className={`card bg-base-100 border border-base-content rounded-md shadow-sm ${className}`}>
       <figure>
         <Image 
           src={"/images/project-placeholder.png"}
@@ -17,7 +20,19 @@ export default function PostCard({ post }) {
         <h2 className="card-title">
           {post.title}
         </h2>
+
+        <div className="text-xs text-base-content/70">
+          {(new Date(post.publishedAt)).toLocaleDateString(locale)}
+        </div>
+
         <p>{post.description}</p>
+
+        <div className="card-actions">
+          <Link href={`/posts/${post.slug}`} className="text-primary font-bold hover:underline">
+            Read more
+          </Link>
+        </div>
+        
         <div className="card-actions justify-end">
           {post.tags && post.tags.length > 0 && (
             <div className="card-actions justify-end">

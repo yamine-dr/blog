@@ -1,4 +1,71 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark;
 }
+
+/* START SHIKI STYLING (FOR MDX CODE BLOCK) */
+/* Shiki light mode */
+html.light .shiki,
+html.light .shiki span {
+  background-color: var(--color-neutral-50) !important;
+}
+
+/* Shiki dark mode */
+html.dark .shiki,
+html.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  /* Optional, if you also want font styles */
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+/* // [!code highlight:numofLines] */
+.shiki .line.highlighted {
+  display: inline-block;
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem;
+  width: calc(100% + 2.5rem);
+  background-color: color-mix(in oklab, var(--color-primary) 15%, transparent) !important;
+}
+.shiki .line.highlighted > * {
+  background-color: color-mix(in oklab, var(--color-primary) 1%, transparent) !important;
+}
+
+/* // [!code --] */
+.shiki .diff.remove::before {
+  content: "-";
+  color: var(--color-error);
+}
+.shiki .diff.remove {
+  display: inline-block;
+  margin-left: -0.55rem;
+  width: 100%;
+  opacity: 0.7;
+  border-left: 1px solid var(--color-error) !important;
+  background: var(--color-error-content) !important;
+}
+.shiki .diff.remove > * {
+  background: var(--color-error-content) !important;
+}
+
+
+
+/* // [!code ++] */
+.shiki .diff.add::before {
+  content: "+";
+  color: var(--color-success);
+}
+.shiki .diff.add {
+  display: inline-block;
+  margin-left: -0.55rem;
+  width: 100%;
+  border-left: 1px solid var(--color-success) !important;
+  background: var(--color-success-content) !important;
+}
+.shiki .diff.add > * {
+  background: var(--color-success-content) !important;
+}
+/* END SHIKI STYLING */

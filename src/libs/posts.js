@@ -43,10 +43,15 @@ export async function getPosts() {
 
     posts.push({
       ...frontMatter.data, // after validation, use parsedData.data
-      slug: fileName.replace(".mdx", ""),
+      slug: fileName.replace(/^\d+-/,"").replace(".mdx", ""),
       content: frontMatter.content,
     })
   }
   
   return posts;
+}
+
+export async function getPost(slug) {
+  const posts = await getPosts();
+  return posts.find(post => post.slug === slug);
 }
