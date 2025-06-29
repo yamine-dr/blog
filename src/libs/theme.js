@@ -6,6 +6,6 @@ export async function setThemeCookie(theme) {
 }
 
 export async function getThemeFromCookie() {
-  console.log("theme cookie", cookies().get("theme")?.value);
-  return cookies().get("theme")?.value || "light";
+  const theme = (await cookies()).get("theme")?.value;
+  return theme || "light";
 }

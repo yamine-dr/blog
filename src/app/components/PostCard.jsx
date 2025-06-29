@@ -1,10 +1,10 @@
 import { Link } from "@/src/i18n/navigation"
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import Image from "next/image"
 
-export default function PostCard({ post, className = "" }) {
+export default function PostCard({ post, className }) {
   const locale = useLocale()
-  
+  const t = useTranslations()
   return (
     <div className={`card bg-base-100 border border-base-content rounded-md shadow-sm ${className}`}>
       <figure>
@@ -28,8 +28,8 @@ export default function PostCard({ post, className = "" }) {
         <p>{post.description}</p>
 
         <div className="card-actions">
-          <Link href={`/posts/${post.slug}`} className="text-primary font-bold hover:underline">
-            Read more
+          <Link href={`/posts/${post.slug}`} className="text-info font-bold hover:underline">
+            {t("HomePage.readMore")}
           </Link>
         </div>
         

@@ -3,5 +3,13 @@
     "home": "Home",
     "portfolio": "Portfolio",
     "contact": "Contact"
+  },
+  "HomePage": {
+    "featuredPosts": "Featured Posts",
+    "morePosts": "More",
+    "readMore": "Read more"
+  },
+  "PostPage": {
+    "home": "Home"
   }
 }

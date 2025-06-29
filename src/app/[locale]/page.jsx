@@ -1,20 +1,23 @@
+import { getLocale, getTranslations } from "next-intl/server"
 import Section from "../components/layout/Section"
 import PostCard from "../components/PostCard"
-import { rightArrowIcon } from "../components/ui/Icons"
-import { getPosts } from "@/src/libs/posts"
+import { Icons } from "../components/ui/Icons"
+import { getLocalisedPosts } from "@/src/libs/posts"
 
 export default async function RootPage() {
-  const posts = await getPosts()
+  const locale = await getLocale()
+  const t = await getTranslations("HomePage")
 
+  const posts = await getLocalisedPosts(locale)
   return (
     <>
-      <Section marginTop={0}>
+      <Section>
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl">Featured Posts</h1>
+          <h1 className="text-3xl">{t("featuredPosts")}</h1>
           <a href="#"
-            className="flex items-center gap-1"
+            className="flex items-center gap-1 text-info hover:animate-bounce-x"
           >
-            More {rightArrowIcon}
+            {t("morePosts")} {Icons.rightArrow}
           </a>
         </div>
 

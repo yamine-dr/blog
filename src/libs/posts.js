@@ -7,8 +7,14 @@ const postsDirectory = path.join(process.cwd(), "content");
 
 /* Define a schema for the blog posts metadata (= front matter), using zod */
 // const PostFrontMatterSchema = z.object({
-//   title: z.string(),
-//   description: z.string(),
+//   title: z.object({
+//     en: z.string(),
+//     fr: z.string(),
+//   }),
+//   description: z.object({
+//     en: z.string(),
+//     fr: z.string(),
+//   }),
 //   published: z.boolean().optional().default(false),
 //   publishedAt: z.coerce.string(),
 // });
@@ -51,7 +57,35 @@ export async function getPosts() {
   return posts;
 }
 
+export async function getLocalisedPosts(locale) {
+  const files = await fs.readdir(postsDirectory);
+  const fileNames = files.filter(file => file.endsWith(".mdx"));
+
+  const posts = [];
+  for await (const fileName of fileNames) {
+    const filePath = path.join(postsDirectory, fileName);
+    const fileContent = await fs.readFile(filePath, "utf-8");
+    const frontMatter = matter(fileContent);
+
+    const { title, description, ...rest } = frontMatter.data;
+    posts.push({
+      ...rest,
+      title: title[locale], // extract the localized title
+      description: description[locale], // Extract the localized description
+      slug: fileName.replace(/^\d+-/,"").replace(".mdx", ""),
+      content: frontMatter.content,
+    });
+  }
+
+  return posts;
+}
+
 export async function getPost(slug) {
   const posts = await getPosts();
+  return posts.find(post => post.slug === slug);
+}
+
+export async function getLocalisedPost(slug, locale) {
+  const posts = await getLocalisedPosts(locale);
   return posts.find(post => post.slug === slug);
 }

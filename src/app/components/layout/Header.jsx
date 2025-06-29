@@ -10,18 +10,18 @@ const ThemeSwitch = dynamic(() => import('../ThemeSwitch'), { ssr: false })
 /**
  * Navigation link component for the header
  */
-const NavLink = ({ to = "#", onClick = () => {}, children }) => {
+const NavLink = ({ href = "#", onClick = () => {}, className, children }) => {
   return (
     <button
       onClick={onClick}
-      className="max-lg:mx-auto lg:my-auto w-fit text-center max-lg:text-base-content hover:text-gray-500 hover:underline transition-colors"
+      className={`max-lg:mx-auto lg:my-auto w-fit text-center max-lg:text-base-content hover:text-gray-500 hover:underline transition-colors ${className}`}
     >
-      {to.startsWith("http") ?
-        <a href={to} target="_blank" rel="noopener noreferrer">
+      {href.startsWith("http") ?
+        <a href={href} target="_blank" rel="noopener noreferrer">
           {children}
         </a>
         :
-        <Link href={to}>
+        <Link href={href} className={className}>
           {children}
         </Link>
       }
@@ -48,7 +48,7 @@ export default function Header() {
     <div className="navbar py-3 bg-base-100 border-b-[0.5px] justify-between">
       <div className="navbar-start w-fit">
         <h2 className="my-auto text-xl md:text-3xl font-bold text-center">
-          Yamine Daroueche
+          <Link href="/">Yamine Daroueche</Link>
         </h2>
 
         {/* Language selection list */}
@@ -91,8 +91,8 @@ export default function Header() {
 
       <div className="navbar-end mr-1 max-lg:w-fit">
         <div className="hidden p-0 lg:flex gap-7 justify-end text-2xl w-full">
-          <NavLink to="/">{t("home")}</NavLink>
-          <NavLink to="https://yaminedaroueche.com/portfolio">{t("portfolio")}</NavLink>
+          <NavLink href="/">{t("home")}</NavLink>
+          <NavLink href="https://yaminedaroueche.com/portfolio">{t("portfolio")}</NavLink>
           <CTAButton>{t("contact")}</CTAButton>
         </div>
 
@@ -124,8 +124,8 @@ export default function Header() {
             </svg>
           </button>
           <div className="pt-20 h-[70vh] flex flex-col gap-6 text-2xl">
-            <NavLink to="/" onClick={toggleNavMenu}>{t("home")}</NavLink>
-            <NavLink to="https://yaminedaroueche.com/portfolio" onClick={toggleNavMenu}>{t("portfolio")}</NavLink>
+            <NavLink href="/" onClick={toggleNavMenu}>{t("home")}</NavLink>
+            <NavLink href="https://yaminedaroueche.com/portfolio" onClick={toggleNavMenu}>{t("portfolio")}</NavLink>
             <CTAButton onClick={toggleNavMenu}>{t("contact")}</CTAButton>
           </div>
         </div>

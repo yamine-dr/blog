@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import { setThemeCookie } from '@/src/libs/theme'
-import { moonIcon, sunIcon } from './ui/Icons'
+import { Icons } from './ui/Icons'
 
 export default function ThemeSwitch() {
   const [mounted, setMounted] = useState(false)
@@ -24,7 +24,7 @@ export default function ThemeSwitch() {
       }}
       className='p-1 border border-neutral hover:cursor-pointer rounded-full'
     >
-      {sunIcon}
+      {Icons.sun}
     </button>
   )
 
@@ -36,7 +36,7 @@ export default function ThemeSwitch() {
       }}
       className='p-1 border border-neutral hover:cursor-pointer rounded-full'
     >
-      {moonIcon}
+      {Icons.moon}
     </button>
   )
 }

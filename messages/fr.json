@@ -3,5 +3,13 @@
     "home": "Acceuil",
     "portfolio": "Portfolio",
     "contact": "Contact"
+  },
+  "HomePage": {
+    "featuredPosts": "Articles à la une",
+    "morePosts": "Plus d'articles",
+    "readMore": "Lire l'article"
+  },
+  "PostPage": {
+    "home": "Acceuil"
   }
 }

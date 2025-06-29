@@ -1,9 +1,10 @@
 import { MDXRemote } from "next-mdx-remote-client/rsc"
 import { Suspense } from "react"
-import { ShikiPlugin } from "./mdx_plugins"
+import { ShikiPlugin } from "./mdx-plugins"
 import { useMDXComponents } from "@/mdx-components"
 import { MdxYouTube } from "./MdxYouTube"
 import { MdxPre } from "./MdxPre"
+import { MdxLocalised } from "./MdxLocalised"
 
 export default function Mdx({ children }) {
   return (
@@ -18,6 +19,7 @@ export default function Mdx({ children }) {
         components={useMDXComponents({ // custom MDX components
           YouTube: MdxYouTube,
           pre: MdxPre,
+          Localised: MdxLocalised,
         })}
       />
     </Suspense>
