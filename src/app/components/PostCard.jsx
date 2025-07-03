@@ -1,6 +1,7 @@
 import { Link } from "@/src/i18n/navigation"
 import { useLocale, useTranslations } from "next-intl"
 import Image from "next/image"
+import { PostViews } from "./PostViews"
 
 export default function PostCard({ post, className }) {
   const locale = useLocale()
@@ -17,9 +18,12 @@ export default function PostCard({ post, className }) {
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">
-          {post.title}
-        </h2>
+        <div className="flex justify-between gap-3">
+          <h2 className="card-title">
+            {post.title}
+          </h2>
+          <PostViews views={post.views}/>
+        </div>
 
         <div className="text-xs text-base-content/70">
           {(new Date(post.publishedAt)).toLocaleDateString(locale)}

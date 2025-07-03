@@ -1,4 +1,13 @@
 {
+  "Metadata": {
+    "homePage": {
+      "description": "The blog of Yamine Daroueche, university student in Web development"
+    },
+    "notFound": {
+      "title": "404 - Page Not Found",
+      "description": "Page not found"
+    }
+  },
   "Header": {
     "home": "Home",
     "portfolio": "Portfolio",
@@ -10,6 +19,7 @@
     "readMore": "Read more"
   },
   "PostPage": {
-    "home": "Home"
+    "home": "Home",
+    "views": "{count, plural, =0 {0 view} =1 {1 view} other {# views}}"
   }
 }

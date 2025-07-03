@@ -5,14 +5,14 @@
 }
 
 @theme {
-  --animate-bounce-x: bounce-x 1s infinite;
-  @keyframes bounce-x {
+  --animate-bounce-horizontal: bounce-horizontal 1s infinite;
+  @keyframes bounce-horizontal {
     0%, 100% {
       transform: none;
       animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
     }
     50% {
-      transform: translateX(25%);
+      transform: translateX(15%);
       animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
     }
   }

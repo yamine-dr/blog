@@ -85,8 +85,6 @@ export default function Header() {
             </details>
           </li>
         </ul>
-
-        <ThemeSwitch/>
       </div>
 
       <div className="navbar-end mr-1 max-lg:w-fit">
@@ -113,6 +111,8 @@ export default function Header() {
             ></path>
           </svg>
         </button>
+
+        <ThemeSwitch/>
       </div>
 
       {/* NavMenu (hidden on large viewport) */}

@@ -1,4 +1,13 @@
 {
+  "Metadata": {
+    "homePage": {
+      "description": "le blog de Yamine Daroueche, étudiant en développement Web"
+    },
+    "notFound": {
+      "title": "404 - page introuvable",
+      "description": "La page recherchée est introuvable"
+    }
+  },
   "Header": {
     "home": "Acceuil",
     "portfolio": "Portfolio",
@@ -10,6 +19,7 @@
     "readMore": "Lire l'article"
   },
   "PostPage": {
-    "home": "Acceuil"
+    "home": "Acceuil",
+    "views": "{count, plural, =0 {0 vue} =1 {1 vue} other {# vues}}"
   }
 }

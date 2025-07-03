@@ -8,7 +8,7 @@ import { MdxLocalised } from "./MdxLocalised"
 
 export default function Mdx({ children }) {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Loading<span className="loading loading-dots loading-xs"></span></div>}>
       <MDXRemote
         source={children}
         options={{
